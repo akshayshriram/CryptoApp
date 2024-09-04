@@ -21,11 +21,11 @@ const Cryptocurrencies = ({ simplified }) => {
     setCyrptos(filterData);
   }, [cryptosList, searchTerm]);
 
-    if (isFetching){
+  if (isFetching) {
     return <>
-    <div className="loader" >
-      <iframe style={{position: "absolute", width: "100%", height: "100%", top: "0", left:"0"}} src="https://lottie.host/embed/8d3879a1-d32d-4536-b720-9599e4e1c545/ibqFsnoevg.json"></iframe>
-      </div>    
+      <div className="loader" >
+        <iframe style={{ position: "absolute", width: "100%", height: "100%", top: "0", left: "0" }} src="https://lottie.host/embed/8d3879a1-d32d-4536-b720-9599e4e1c545/ibqFsnoevg.json"></iframe>
+      </div>
     </>
   }
 
