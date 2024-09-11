@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import HTMLReactParser from "html-react-parser"
 import { useParams } from "react-router-dom"
 import millify from 'millify'
-import { Col, Row, Typography, Select } from 'antd'
+import { Col, Row, Typography, Select, Card, Flex } from 'antd'
 import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, NumberOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import { useGetCryptoDetailsQuery, useGetCryptoHistoryQuery } from '../services/cryptoApi'
 // import { LineChart } from './LineChart'
@@ -128,55 +128,57 @@ const CryptoDetails = () => {
           </Select>
           <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails?.price)} coinName={cryptoDetails?.name} />
           <Col className="stats-container">
-            <Col className="coin-value-statistics">
-              <Col className="coin-value-statistics-heading">
-                <Title level={3} className="coin-details-heading">
-                  {cryptoDetails.name} value statistics
-                </Title>
-                <p>An overview showing the stats of {cryptoDetails.name}</p>
-              </Col>
-              {stats.map(({ icon, title, value }) => (
-                <Col key={title} className="coin-stats">
-                  <Col className="coin-stats-name">
-                    <Text>{icon}</Text>
-                    <Text>{title}</Text>
-                  </Col>
-                  <Text className="stats">{value}</Text>
-                </Col>
-              ))}
-            </Col>
-            <Col className="others-statistics-info ">
-              <Col className="coin-value-statistics-heading">
-                <Title level={3} className="coin-details-heading">
-                  Other statistics
-                </Title>
-                <p>An overview showing the stats of all cryptoCurrencies</p>
-              </Col>
-              {genericStats.map(({ icon, title, value }) => (
-                <Col key={title} className="coin-stats">
-                  <Col className="coin-stats-name">
-                    <Text>{icon}</Text>
-                    <Text>{title}</Text>
-                  </Col>
-                  <Text className="stats">{value}</Text>
-                </Col>
-              ))}
-            </Col>
-          </Col>
-          <Col className="coin-desc-link">
-            <Row className="coin-desc">
+            <Flex className="" vertical>
               <Title level={3} className="coin-details-heading">What is {cryptoDetails.name}?</Title>
               {HTMLReactParser(cryptoDetails.description)}
-            </Row>
-            <Col className="coin-links">
-              <Title level={3} className="coin-details-heading">{cryptoDetails.name} Links</Title>
-              {cryptoDetails.links?.map((link) => (
-                <Row className="coin-link" key={link.name}>
-                  <Title level={5} className="link-name">{link.type}</Title>
-                  <a href={link.url} target="_blank" rel="noreferrer">{link.name}</a>
-                </Row>
-              ))}
-            </Col>
+            </Flex>
+            <Flex gap="large" className='flex-container'>
+              <Card className="coin-value-statistics">
+                <Col className="coin-value-statistics-heading">
+                  <Title level={3} className="coin-details-heading">
+                    {cryptoDetails.name} value statistics
+                  </Title>
+                  <p>An overview showing the stats of {cryptoDetails.name}</p>
+                </Col>
+                {stats.map(({ icon, title, value }) => (
+                  <Col key={title} className="coin-stats">
+                    <Col className="coin-stats-name">
+                      <Text>{icon}</Text>
+                      <Text>{title}</Text>
+                    </Col>
+                    <Text className="stats">{value}</Text>
+                  </Col>
+                ))}
+                <Col className="coin-value-statistics-heading">
+                  <Title level={3} className="coin-details-heading">
+                    Other statistics
+                  </Title>
+                  <p>An overview showing the stats of all cryptoCurrencies</p>
+                </Col>
+                {genericStats.map(({ icon, title, value }) => (
+                  <Col key={title} className="coin-stats">
+                    <Col className="coin-stats-name">
+                      <Text>{icon}</Text>
+                      <Text>{title}</Text>
+                    </Col>
+                    <Text className="stats">{value}</Text>
+                  </Col>
+                ))}
+              </Card>
+              <Col className="others-statistics-info ">
+
+              </Col>
+              <Card className="coin-links">
+                <Title level={3} className="coin-details-heading">{cryptoDetails.name} Links</Title>
+                {cryptoDetails.links?.map((link) => (
+                  <Row className="coin-link" key={link.name}>
+                    <Title level={5} className="link-name">{link.type}</Title>
+                    <a href={link.url} target="_blank" rel="noreferrer">{link.name}</a>
+                  </Row>
+                ))}
+              </Card>
+            </Flex>
+
           </Col>
         </Col>
       </Col>

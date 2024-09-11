@@ -53,7 +53,7 @@ a:hover{
     width: 100%;
 }
 .logo{
-    margin:0 0 0 15px;
+    margin:15px 0;
 }
 .logo a{
    color: white;
@@ -132,6 +132,9 @@ a:hover{
     .show-more{
         font-size: 1.3rem !important;
     }
+    .logo{
+        margin: 0;
+    }
 }
 
 .coin-detail-container{
@@ -163,6 +166,7 @@ a:hover{
 .stats-container{
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     align-items: center;
     gap: 40px;
 }
@@ -235,8 +239,8 @@ a:hover{
 }
 
 .coin-links{
-  padding: 0px 20px;
-    flex: 0.5;
+  /* padding: 0px 20px; */
+    /* flex: 0.5; */
 }
 
 .coin-link{
@@ -291,9 +295,11 @@ a:hover{
 .select-news{
     width: 180px;
 }
-.news-card{
-    min-height: 300px !important;
+.ant-card{
+    min-height: 100%;
 }
+
+
 .news-image-container{
     display: flex !important;
     justify-content: space-between !important;
@@ -376,4 +382,16 @@ width: 70%;
     flex-direction: column;
     padding: 20px;
     align-items: center;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+    .flex-container{
+        flex-direction: column;
+    }
+    .coin-link{
+        flex-direction: column;
+    }
 }
