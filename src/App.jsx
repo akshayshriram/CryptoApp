@@ -13,7 +13,7 @@ import "./App.css";
 import { Layout, Space, Typography } from "antd";
 import { Link, Route, Routes } from "react-router-dom";
 
-function App()  {
+function App() {
   return (
     <>
       <div className="app">
@@ -47,11 +47,6 @@ function App()  {
             >
               CryptoApp <br />
             </Typography.Title>
-            <Space>
-              <Link to="/">Home</Link>
-              <Link to="/exchanges">Exchanges</Link>
-              <Link to="/news">News</Link>
-            </Space>
             <Footer />
           </div>
         </div>

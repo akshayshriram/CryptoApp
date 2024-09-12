@@ -2,7 +2,7 @@ import React from "react";
 import millify from "millify";
 import { Typography, Row, Col, Statistic, Button } from "antd";
 import { Link } from "react-router-dom";
-import { useGetCryptosQuery } from "../services/cryptoAPI";
+import { useGetCryptosQuery } from "../services/cryptoApi";
 import { Cryptocurrencies, News } from "../components";
 
 const { Title } = Typography;
@@ -13,11 +13,22 @@ const Homepage = () => {
 
   // console.log(data);
   if (isFetching) {
-    return <>
-      <div className="loader" >
-        <iframe style={{ position: "absolute", width: "100%", height: "100%", top: "0", left: "0" }} src="https://lottie.host/embed/8d3879a1-d32d-4536-b720-9599e4e1c545/ibqFsnoevg.json"></iframe>
-      </div>
-    </>
+    return (
+      <>
+        <div className="loader">
+          <iframe
+            style={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              top: "0",
+              left: "0",
+            }}
+            src="https://lottie.host/embed/8d3879a1-d32d-4536-b720-9599e4e1c545/ibqFsnoevg.json"
+          ></iframe>
+        </div>
+      </>
+    );
   }
 
   return (
@@ -62,7 +73,9 @@ const Homepage = () => {
           Top Cryptocurrencies in the world
         </Title>
         <Title level={3} className="show-more">
-          <Link to="/cryptocurrencies"><Button type="primary" >Show More</Button></Link>
+          <Link to="/cryptocurrencies">
+            <Button type="primary">Show More</Button>
+          </Link>
         </Title>
       </div>
       <Cryptocurrencies simplified />
@@ -71,7 +84,9 @@ const Homepage = () => {
           latest Crypto News
         </Title>
         <Title level={3} className="show-more">
-          <Link to="/news"><Button type="primary" >Show More</Button></Link>
+          <Link to="/news">
+            <Button type="primary">Show More</Button>
+          </Link>
         </Title>
       </div>
       <News simplified />
