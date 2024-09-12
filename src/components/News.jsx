@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Typography, Select, Row, Col, Avatar, Card, Button, Input } from "antd";
+import {
+  Typography,
+  Select,
+  Row,
+  Col,
+  Avatar,
+  Card,
+  Button,
+  Input,
+} from "antd";
 import moment from "moment";
 import { useGetCryptoNewsQuery } from "../services/cryptoNews";
 import { Link } from "react-router-dom";
@@ -15,6 +24,8 @@ const News = ({ simplified }) => {
   const [News, setNews] = useState([]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     if (!cryptoNews) return; // Check if cryptoNews exists before proceeding
 
     // Filter the data based on the search term
@@ -30,36 +41,32 @@ const News = ({ simplified }) => {
     }
   }, [cryptoNews, searchTerm, simplified]);
 
-
-
   console.log(cryptoNews);
 
-  return <>
-    <div className="search-crypto">
-      {!simplified && (
-        <Input
-          placeholder="Search Cryptocurrency"
-          onChange={(e) => setSearchTerm(e.target.value)}
-        ></Input>
-      )}
-    </div>
-    <Row gutter={[32, 32]} className="news-card-container">
-      {News?.map((news, index) => (
-        <Col xs={24} sm={12} lg={12} className="news-card" key={index}>
-          <Card
-            title={news.title}
-
-          >
-            <Link to={`${news.URL}`} target="_blank">
-              <Title level={5}>{news.Title}</Title>
-              <Button type="primary" >Read More</Button>
-
-            </Link>
-          </Card>
-        </Col>
-      ))}
-    </Row>
-  </>;
+  return (
+    <>
+      <div className="search-crypto">
+        {!simplified && (
+          <Input
+            placeholder="Search Cryptocurrency"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          ></Input>
+        )}
+      </div>
+      <Row gutter={[32, 32]} className="news-card-container">
+        {News?.map((news, index) => (
+          <Col xs={24} sm={12} lg={12} className="news-card" key={index}>
+            <Card title={news.title}>
+              <Link to={`${news.URL}`} target="_blank">
+                <Title level={5}>{news.Title}</Title>
+                <Button type="primary">Read More</Button>
+              </Link>
+            </Card>
+          </Col>
+        ))}
+      </Row>
+    </>
+  );
 };
 
 export default News;

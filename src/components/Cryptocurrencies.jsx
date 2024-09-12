@@ -14,6 +14,8 @@ const Cryptocurrencies = ({ simplified }) => {
   // console.log(cryptos);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     const filterData = cryptosList?.data?.coins.filter((coin) =>
       coin.name.toLowerCase().includes(searchTerm.toLowerCase())
     );

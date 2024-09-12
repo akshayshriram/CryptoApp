@@ -1,24 +1,42 @@
-import React, { useState } from 'react'
-import HTMLReactParser from "html-react-parser"
-import { useParams } from "react-router-dom"
-import millify from 'millify'
-import { Col, Row, Typography, Select, Card, Flex } from 'antd'
-import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, NumberOutlined, ThunderboltOutlined } from '@ant-design/icons';
-import { useGetCryptoDetailsQuery, useGetCryptoHistoryQuery } from '../services/cryptoApi'
+import React, { useEffect, useState } from "react";
+import HTMLReactParser from "html-react-parser";
+import { useParams } from "react-router-dom";
+import millify from "millify";
+import { Col, Row, Typography, Select, Card, Flex } from "antd";
+import {
+  MoneyCollectOutlined,
+  DollarCircleOutlined,
+  FundOutlined,
+  ExclamationCircleOutlined,
+  StopOutlined,
+  TrophyOutlined,
+  CheckOutlined,
+  NumberOutlined,
+  ThunderboltOutlined,
+} from "@ant-design/icons";
+import {
+  useGetCryptoDetailsQuery,
+  useGetCryptoHistoryQuery,
+} from "../services/cryptoApi";
 // import { LineChart } from './LineChart'
-import LineChart from './LineChart'
-
+import LineChart from "./LineChart";
 
 const { Title, Text } = Typography;
 const { Option } = Select;
 
 const CryptoDetails = () => {
-
   const { coinId } = useParams();
-  const [timePeriod, setTimePeriod] = useState('7d');
+  const [timePeriod, setTimePeriod] = useState("7d");
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
-  const { data: coinHistory } = useGetCryptoHistoryQuery({ coinId, timePeriod });
+  const { data: coinHistory } = useGetCryptoHistoryQuery({
+    coinId,
+    timePeriod,
+  });
   const cryptoDetails = data?.data?.coin;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const time = ["3h", "24h", "7d", "30d", "1y", "3m", "3y", "5y"];
 
@@ -37,15 +55,17 @@ const CryptoDetails = () => {
 
     {
       title: "Market Cap",
-      value: `$ ${cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)
-        }`,
+      value: `$ ${
+        cryptoDetails?.marketCap && millify(cryptoDetails?.marketCap)
+      }`,
       icon: <DollarCircleOutlined />,
     },
     {
       title: "All-time-high(daily avg.)",
-      value: `$ ${cryptoDetails?.allTimeHigh?.price &&
+      value: `$ ${
+        cryptoDetails?.allTimeHigh?.price &&
         millify(cryptoDetails?.allTimeHigh?.price)
-        }`,
+      }`,
       icon: <TrophyOutlined />,
     },
   ];
@@ -72,15 +92,17 @@ const CryptoDetails = () => {
     },
     {
       title: "Total Supply",
-      value: `$ ${cryptoDetails?.supply?.total && millify(cryptoDetails?.supply?.total)
-        }`,
+      value: `$ ${
+        cryptoDetails?.supply?.total && millify(cryptoDetails?.supply?.total)
+      }`,
       icon: <ExclamationCircleOutlined />,
     },
     {
       title: "Circulating Supply",
-      value: `$ ${cryptoDetails?.supply?.circulating &&
+      value: `$ ${
+        cryptoDetails?.supply?.circulating &&
         millify(cryptoDetails?.supply?.circulating)
-        }`,
+      }`,
       icon: <ExclamationCircleOutlined />,
     },
   ];
@@ -126,13 +148,19 @@ const CryptoDetails = () => {
               <Option key={time}>{time}</Option>
             ))}
           </Select>
-          <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails?.price)} coinName={cryptoDetails?.name} />
+          <LineChart
+            coinHistory={coinHistory}
+            currentPrice={millify(cryptoDetails?.price)}
+            coinName={cryptoDetails?.name}
+          />
           <Col className="stats-container">
             <Flex className="" vertical>
-              <Title level={3} className="coin-details-heading">What is {cryptoDetails.name}?</Title>
+              <Title level={3} className="coin-details-heading">
+                What is {cryptoDetails.name}?
+              </Title>
               {HTMLReactParser(cryptoDetails.description)}
             </Flex>
-            <Flex gap="large" className='flex-container'>
+            <Flex gap="large" className="flex-container">
               <Card className="coin-value-statistics">
                 <Col className="coin-value-statistics-heading">
                   <Title level={3} className="coin-details-heading">
@@ -165,20 +193,23 @@ const CryptoDetails = () => {
                   </Col>
                 ))}
               </Card>
-              <Col className="others-statistics-info ">
-
-              </Col>
+              <Col className="others-statistics-info "></Col>
               <Card className="coin-links">
-                <Title level={3} className="coin-details-heading">{cryptoDetails.name} Links</Title>
+                <Title level={3} className="coin-details-heading">
+                  {cryptoDetails.name} Links
+                </Title>
                 {cryptoDetails.links?.map((link) => (
                   <Row className="coin-link" key={link.name}>
-                    <Title level={5} className="link-name">{link.type}</Title>
-                    <a href={link.url} target="_blank" rel="noreferrer">{link.name}</a>
+                    <Title level={5} className="link-name">
+                      {link.type}
+                    </Title>
+                    <a href={link.url} target="_blank" rel="noreferrer">
+                      {link.name}
+                    </a>
                   </Row>
                 ))}
               </Card>
             </Flex>
-
           </Col>
         </Col>
       </Col>
