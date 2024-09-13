@@ -8,7 +8,7 @@ import {
   MenuOutlined,
 } from "@ant-design/icons";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import navLogo from "../images/CryptoApp.png";
 
 const { useBreakpoint } = Grid;
@@ -16,6 +16,8 @@ const { useBreakpoint } = Grid;
 const Navbar = () => {
 
   const screens = useBreakpoint(); // Get the current screen sizes
+
+  const location = useLocation();
 
   const [activeMenu, setActiveMenu] = useState(true);
   const [screenSize, setScreenSize] = useState(null);
@@ -45,17 +47,17 @@ const Navbar = () => {
   const menuItems = [
     {
       label: <Link to="/">Home</Link>,
-      key: "home",
+      key: "/",
       icon: <HomeOutlined />,
     },
     {
       label: <Link to="/cryptocurrencies">Cryptocurrencies</Link>,
-      key: "cryptocurrencies",
+      key: "/cryptocurrencies",
       icon: <FundOutlined />,
     },
     {
       label: <Link to="/news">News</Link>,
-      key: "news",
+      key: "/news",
       icon: <BulbOutlined />,
     },
   ];
@@ -75,7 +77,7 @@ const Navbar = () => {
       </Row>
       {
         activeMenu && (
-          <Menu theme="dark" mode="vertical" items={menuItems} />
+          <Menu theme="dark" mode="vertical" items={menuItems} selectedKeys={[location.pathname]} />
         )
       }
     </div >
