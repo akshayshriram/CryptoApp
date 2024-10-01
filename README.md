@@ -89,10 +89,10 @@ This structure separates concerns, making the project modular and easier to main
 ![All Crypto Details Overview](./src/images/all-crypto.png)
 
 3. Single Currency Detail Page
-![Single Currency Detail Page](./src/images/crypto-details.png)
+![Single Currency Detail Page](./src/images/crypto details.png)
 
 4. Interactive Charts
-![Interactive Charts](./src/images/single-crypto.png)
+![Interactive Charts](./src/images/single-currency.png)
 
 5. News Section
 ![News Section](./src/images/news.png)
