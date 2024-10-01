@@ -83,19 +83,19 @@ This structure separates concerns, making the project modular and easier to main
 ## Screenshots
 
 1. Dashboard Overview
-![Dashboard Overview](./image/dashboard.png)
+![Dashboard Overview](./src/images/dashboard.png)
 
 2. All Crypto Details Overview
-![All Crypto Details Overview](./image/all-crypto.png)
+![All Crypto Details Overview](./src/images/all-crypto.png)
 
 3. Single Currency Detail Page
-![Single Currency Detail Page](./image/crypto-details.png)
+![Single Currency Detail Page](./src/images/crypto-details.png)
 
 4. Interactive Charts
-![Interactive Charts](./image/single-crypto.png)
+![Interactive Charts](./src/images/single-crypto.png)
 
 5. News Section
-![News Section](./public/news.png)
+![News Section](./src/images/news.png)
 
 ## Future Enhancements
 
