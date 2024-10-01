@@ -109,10 +109,9 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
-
 ## Acknowledgements
 
-- Data provided by [Your API source]
-- Icons from [Your icon source]
-- [Any other acknowledgements]
+- Data provided by Rapid API
+- Icons from Ant Design
+- Charts from Chart.js
+- News from Crypto News API
